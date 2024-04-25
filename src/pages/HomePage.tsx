@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <main className="relative flex flex-col justify-center items-center">
       <div
-        className="relative flex flex-col w-full h-[52.5rem] justify-center items-center bg-cover bg-no-repeat border-b-[2px] border-b-black gap-12"
+        className="relative flex flex-col w-full h-[52.5rem] justify-center items-center bg-cover bg-no-repeat border-b-[0.1px] border-b-black gap-12"
         style={{ backgroundImage: `url(${ProgrammingCat})` }}
       >
         <div className="flex flex-col text-white mt-4">
@@ -28,7 +28,7 @@ const HomePage = () => {
               <br />
               That's what <span>code is all about.</span>
             </h2>
-            <Link to="/view">
+            <Link to="/posts">
               <button className="w-[8rem] h-[3rem] mt-3 text-white font-bold rounded-md transition ease-in-out delay-150 bg-blue-500 hover:bg-indigo-500 hover:-translate-y-1 hover:scale-110 duration-200">
                 Get Started
               </button>
@@ -37,7 +37,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <hr className="relative flex justify-center items-center w-full h-[6rem] bg-[#1c140b]" />
+      <hr className="relative flex justify-center items-center w-full h-[6rem] bg-[#110c06]" />
 
       <div className="absolute flex justify-between items-center w-[40rem] h-[5rem] bg-[#090909] rounded-2xl bottom-[3.5rem] border-2 border-white text-md text-[#fff9f9] font-open font-bold px-4">
         <div className="w-[12rem] border-r-[2px] border-r-[#9f9998]">

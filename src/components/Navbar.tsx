@@ -7,7 +7,7 @@ import { IoIosCreate } from "react-icons/io";
 
 const Navbar = () => {
   return (
-    <div className="w-full flex justify-between items-center px-12 py-4 bg-[#010409] border-b-[1px] border-b-white">
+    <div className="w-full flex justify-between items-center px-12 py-4 bg-[#010409] border-b-[0.1px] border-b-white text-[#dedfdf]">
       <Link
         to="/"
         className="flex items-center gap-3 text-4xl hover:text-pink-600"
@@ -20,29 +20,29 @@ const Navbar = () => {
         <input
           type="text"
           placeholder="Search"
-          className="w-[52rem] h-12 rounded-xl pl-7 ml-36 bg-white border-black border-2 text-black"
+          className="w-[45rem] h-12 rounded-xl pl-7 ml-36 bg-white border-black border-2 text-black"
         />
         <FaSearch className="absolute text-[#a5a9b3] top-4 left-[9.6rem]" />
       </div>
 
-      <div className="flex justify-center items-center gap-8 text-lg">
+      <div className="flex gap-8 text-lg">
         <Link
           to="/"
-          className="flex justify-center items-center gap-2 hover:text-blue-200"
+          className="flex justify-center items-center gap-2 hover:text-blue-200 font-bold"
         >
           Home
           <IoHome />
         </Link>
         <Link
           to="/posts"
-          className="flex justify-center items-center gap-2 hover:text-blue-200"
+          className="flex justify-center items-center gap-2 hover:text-blue-200 font-bold"
         >
           View
           <MdPageview />
         </Link>
         <Link
           to="/create"
-          className="flex justify-center items-center gap-2 hover:text-blue-200"
+          className="flex justify-center items-center gap-2 hover:text-blue-200 font-bold"
         >
           Create
           <IoIosCreate />
