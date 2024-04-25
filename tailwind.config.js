@@ -5,6 +5,8 @@ export default {
     extend: {
       fontFamily: {
         encode: ["Encode Sans", "sans-serif"],
+        source: ["Source Sans Pro", "monospace"],
+        open: ["Open Sans", "sans-serif"],
       },
     },
   },
