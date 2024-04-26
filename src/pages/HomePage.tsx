@@ -37,7 +37,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <hr className="relative flex justify-center items-center w-full h-[6rem] bg-[#140d06]" />
+      <hr className="relative flex justify-center items-center w-full h-[6rem] bg-[#100a04]" />
 
       <div className="absolute flex justify-between items-center w-[40rem] h-[5rem] bg-[#090909] rounded-2xl bottom-[3.5rem] border-2 border-white text-md text-[#fff9f9] font-open font-bold px-4">
         <div className="w-[12rem] border-r-[2px] border-r-[#9f9998]">

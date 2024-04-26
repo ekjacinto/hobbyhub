@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import ViewPosts from "./pages/ViewPosts";
+import CreatePost from "./pages/CreatePost";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/posts" element={<ViewPosts />} />
-        <Route path="/create" element={<h1>Create</h1>} />
+        <Route path="/create" element={<CreatePost />} />
+        <Route path="/posts/:id" element={<h1>Post</h1>} />
       </Routes>
     </div>
   );
