@@ -5,7 +5,7 @@ import { IoHome } from "react-icons/io5";
 import { MdPageview } from "react-icons/md";
 import { IoIosCreate } from "react-icons/io";
 import { createClient } from "@supabase/supabase-js";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Post {
   id: number;
@@ -27,6 +27,7 @@ const Navbar = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [open, setOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -35,6 +36,20 @@ const Navbar = () => {
       if (data) setPosts(data);
     };
     fetchPosts();
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      )
+        setOpen(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +76,10 @@ const Navbar = () => {
           onClick={() => setOpen(!open)}
           className="w-[45rem] h-12 rounded-xl pl-7 ml-36 bg-white border-black border-2 text-black"
         />
-        <div className="z-10 absolute flex flex-col w-[41rem] h-auto bg-white top-14 left-[11rem] rounded-sm border-2 border-black text-gray-700">
+        <div
+          ref={dropdownRef}
+          className="z-10 absolute flex flex-col w-[41rem] h-auto bg-white top-14 left-[11rem] rounded-sm border-2 border-black text-[#5b5959]"
+        >
           {open === true &&
             posts
               .filter((post) => {
@@ -72,7 +90,7 @@ const Navbar = () => {
               .map((post) => (
                 <Link
                   to={`view/${post.id}`}
-                  className="text-md font-open font-bold"
+                  className="text-md font-open border-b-[1px] border-b-[#b6b5b5]"
                 >
                   {post.title}
                 </Link>

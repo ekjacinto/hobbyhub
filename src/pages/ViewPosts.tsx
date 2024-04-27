@@ -34,7 +34,6 @@ const ViewPosts = () => {
         }));
         setPosts(formattedData);
       }
-      console.log(data);
     };
     fetchPosts();
   }, []);
@@ -45,7 +44,6 @@ const ViewPosts = () => {
 
   const handleFilterChange = (filter: string) => {
     setFilterOption(filter);
-    console.log(filter);
   };
 
   const formatDateTime = (dateTimeString: string) => {
@@ -66,7 +64,7 @@ const ViewPosts = () => {
           <SortSelect changeEvent={handleSortChange} />
         </div>
         <div className="flex flex-col items-center text-start w-full h-full">
-          {posts && (filterOption === "forum" || filterOption === "")
+          {posts && (filterOption === "forums" || filterOption === "")
             ? sortOption === "Newest"
               ? posts
                   .sort((a, b) => (a.created_at > b.created_at ? -1 : 1))
