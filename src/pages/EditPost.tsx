@@ -1,10 +1,12 @@
 import { createClient } from "@supabase/supabase-js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import LanguageSelect from "@/components/LanguageSelect";
 import TextEditor from "@/components/TextEditor";
+import { useParams } from "react-router-dom";
 
 const CreatePost = () => {
+  const { id } = useParams<{ id: string }>();
   const supabaseUrl = "https://svyholmxkcaadmualsfs.supabase.co";
   const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
   const supabase = createClient(supabaseUrl, supabaseKey);
@@ -14,6 +16,24 @@ const CreatePost = () => {
   const [image, setImage] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [language, setLanguage] = useState<string>("");
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      const { data, error } = await supabase
+        .from("posts")
+        .select("*")
+        .eq("id", id);
+      if (error) console.error(error);
+      if (data) {
+        setTitle(data[0].title);
+        setDescription(data[0].description);
+        setImage(data[0].image);
+        setContent(data[0].content);
+        setLanguage(data[0].language);
+      }
+    };
+    fetchPost();
+  }, [id]);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -41,21 +61,20 @@ const CreatePost = () => {
     const sanitizedContent = content.replace(/<[^>]*>?/gm, "");
     const { data: postData, error: postError } = await supabase
       .from("posts")
-      .insert([
-        {
-          title,
-          description,
-          image,
-          content: sanitizedContent,
-          language,
-        },
-      ]);
+      .update({
+        title,
+        description,
+        image,
+        content: sanitizedContent,
+        language,
+      })
+      .eq("id", id);
     if (postError) {
       console.error(postError);
     } else {
       console.log(postData);
     }
-    window.location.href = "/";
+    window.location.href = "/view";
   };
 
   return (
@@ -66,7 +85,7 @@ const CreatePost = () => {
           onSubmit={handleSubmit}
         >
           <h1 className="text-start text-3xl font-open font-bold mb-4 text-white">
-            Create Post:
+            Update Post:
           </h1>
           <hr className="border-gray-300 mb-6" />
           <div className="flex flex-col">

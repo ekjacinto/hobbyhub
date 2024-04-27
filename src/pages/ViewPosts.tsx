@@ -8,6 +8,7 @@ interface Post {
   id: number;
   title: string;
   description: string;
+  content: string;
   created_at: string;
   language: string;
   upvotes: number;

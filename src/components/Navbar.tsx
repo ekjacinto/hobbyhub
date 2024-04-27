@@ -4,8 +4,37 @@ import { FaSearch } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import { MdPageview } from "react-icons/md";
 import { IoIosCreate } from "react-icons/io";
+import { createClient } from "@supabase/supabase-js";
+import { useEffect, useState } from "react";
+
+interface Post {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  content: string;
+  created_at: string;
+  language: string;
+  upvotes: number;
+  comments: string[];
+}
 
 const Navbar = () => {
+  const supabaseUrl = "https://svyholmxkcaadmualsfs.supabase.co";
+  const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const { data, error } = await supabase.from("posts").select("*");
+      if (error) console.error(error);
+      if (data) setPosts(data);
+    };
+    fetchPosts();
+  }, []);
+
   return (
     <div className="w-full flex justify-between items-center px-12 py-4 bg-[#010409] border-b-[0.1px] border-b-white text-[#dedfdf]">
       <Link
