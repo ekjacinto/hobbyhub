@@ -133,15 +133,15 @@ const PostPage = () => {
     <div className="flex h-full bg-[#0b0d11] justify-center items-center">
       <div className="relative flex flex-col w-full h-auto justify-start items-center text-gray-200 mb-8">
         <div className="bg-[#0c0c0c] border-[1px] border-[#4b4b51] mt-8 px-4 pt-6 pb-6 max-w-[65rem] w-full h-auto rounded-lg shadow-sm shadow-[#cfcfcf]">
-          <div className="max-w-[63rem] w-full flex flex-row-reverse">
+          <div className="flex flex-row-reverse">
             {upvoted ? (
-              <button className="absolute flex gap-2 text-blue-500">
+              <button className="absolute flex max-w-[4rem] w-full justify-end items-center gap-2 text-blue-500">
                 <FaRegThumbsUp className="text-2xl" />
                 <p className="font-open font-bold text-lg">{upvotes}</p>
               </button>
             ) : (
               <button
-                className="absolute flex max-w-[63rem] w-full justify-end gap-2 text-gray-300 hover:text-blue-300 "
+                className="absolute flex max-w-[4rem] w-full justify-end items-center gap-2 text-gray-300 hover:text-blue-300 "
                 onClick={handleUpvote}
               >
                 <FaRegThumbsUp className="text-2xl " />
