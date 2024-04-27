@@ -31,6 +31,8 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
+![code](https://github.com/ekjacinto/hobbyhub/assets/109046831/190cc58b-50c9-452d-b6da-33a0408790fd)
+
 GIF created with [Veed](https://www.veed.io/convert/mp4-to-gif)
 
 ## Notes
