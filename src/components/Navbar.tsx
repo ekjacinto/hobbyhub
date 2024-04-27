@@ -25,6 +25,8 @@ const Navbar = () => {
   const supabase = createClient(supabaseUrl, supabaseKey);
 
   const [posts, setPosts] = useState<Post[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -34,6 +36,10 @@ const Navbar = () => {
     };
     fetchPosts();
   }, []);
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
 
   return (
     <div className="w-full flex justify-between items-center px-12 py-4 bg-[#010409] border-b-[0.1px] border-b-white text-[#dedfdf]">
@@ -46,11 +52,32 @@ const Navbar = () => {
       </Link>
 
       <div className="flex relative">
+        <div></div>
         <input
           type="text"
           placeholder="Search"
+          value={searchTerm}
+          onChange={onChange}
+          onClick={() => setOpen(!open)}
           className="w-[45rem] h-12 rounded-xl pl-7 ml-36 bg-white border-black border-2 text-black"
         />
+        <div className="z-10 absolute flex flex-col w-[41rem] h-auto bg-white top-14 left-[11rem] rounded-sm border-2 border-black text-gray-700">
+          {open === true &&
+            posts
+              .filter((post) => {
+                const currentSearch = searchTerm.toLowerCase();
+                const currentTitle = post.title.toLowerCase();
+                return currentTitle.includes(currentSearch);
+              })
+              .map((post) => (
+                <Link
+                  to={`view/${post.id}`}
+                  className="text-md font-open font-bold"
+                >
+                  {post.title}
+                </Link>
+              ))}
+        </div>
         <FaSearch className="absolute text-[#a5a9b3] top-4 left-[9.6rem]" />
       </div>
 

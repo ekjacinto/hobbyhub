@@ -55,7 +55,7 @@ const CreatePost = () => {
     } else {
       console.log(postData);
     }
-    window.location.href = "/";
+    window.location.href = "/view";
   };
 
   return (

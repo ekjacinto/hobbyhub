@@ -1,5 +1,4 @@
 import { VscCommentDiscussion } from "react-icons/vsc";
-import { FiThumbsUp } from "react-icons/fi";
 import { FaJava, FaPython, FaHtml5, FaRust, FaPhp } from "react-icons/fa";
 import { IoLogoJavascript, IoLogoCss3 } from "react-icons/io5";
 import { IoIosCheckmark } from "react-icons/io";
@@ -26,15 +25,7 @@ const FilterSelect = ({ filter, changeEvent }: FilterSelectProps) => {
             <IoIosCheckmark className="text-blue-400 scale-[2]" />
           )}
         </section>
-        <section className="flex justify-between items-center mb-4">
-          <div className="flex items-center gap-2 hover:bg-[#4c4c4c] hover:transition-all hover:rounded-lg hover:px-2">
-            <FiThumbsUp />
-            <button onClick={() => changeEvent("upvoted")}>Upvoted</button>
-          </div>
-          {filter === "upvoted" && (
-            <IoIosCheckmark className="text-blue-400 scale-[2]" />
-          )}
-        </section>
+
         <hr className="border-[#4b4b51] mb-4" />
         <section className="flex justify-between items-center gap-2 mb-4">
           <div className="flex items-center gap-2 hover:bg-[#4c4c4c] hover:transition-all hover:rounded-lg hover:px-2">

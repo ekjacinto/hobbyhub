@@ -66,16 +66,79 @@ const ViewPosts = () => {
           <SortSelect changeEvent={handleSortChange} />
         </div>
         <div className="flex flex-col items-center text-start w-full h-full">
-          {posts &&
-            posts.map((post) => (
-              <PostMiniView
-                key={post.id}
-                id={post.id}
-                title={post.title}
-                createdAt={post.created_at}
-                description={post.description}
-              />
-            ))}
+          {posts && (filterOption === "forum" || filterOption === "")
+            ? sortOption === "Newest"
+              ? posts
+                  .sort((a, b) => (a.created_at > b.created_at ? -1 : 1))
+                  .map((post) => (
+                    <PostMiniView
+                      key={post.id}
+                      id={post.id}
+                      title={post.title}
+                      createdAt={post.created_at}
+                      description={post.description}
+                    />
+                  ))
+              : sortOption === "mostPopular"
+              ? posts
+                  .sort((a, b) => (a.upvotes > b.upvotes ? -1 : 1))
+                  .map((post) => (
+                    <PostMiniView
+                      key={post.id}
+                      id={post.id}
+                      title={post.title}
+                      createdAt={post.created_at}
+                      description={post.description}
+                    />
+                  ))
+              : posts.map((post) => (
+                  <PostMiniView
+                    key={post.id}
+                    id={post.id}
+                    title={post.title}
+                    createdAt={post.created_at}
+                    description={post.description}
+                  />
+                ))
+            : posts && filterOption !== ""
+            ? sortOption === "Newest"
+              ? posts
+                  .filter((post) => post.language === filterOption)
+                  .sort((a, b) => (a.created_at > b.created_at ? -1 : 1))
+                  .map((post) => (
+                    <PostMiniView
+                      key={post.id}
+                      id={post.id}
+                      title={post.title}
+                      createdAt={post.created_at}
+                      description={post.description}
+                    />
+                  ))
+              : sortOption === "mostPopular"
+              ? posts
+                  .filter((post) => post.language === filterOption)
+                  .sort((a, b) => (a.upvotes > b.upvotes ? -1 : 1))
+                  .map((post) => (
+                    <PostMiniView
+                      key={post.id}
+                      id={post.id}
+                      title={post.title}
+                      createdAt={post.created_at}
+                      description={post.description}
+                    />
+                  ))
+              : posts
+                  .filter((post) => post.language === filterOption)
+                  .map((post) => (
+                    <PostMiniView
+                      key={post.id}
+                      id={post.id}
+                      title={post.title}
+                      createdAt={post.created_at}
+                      description={post.description}
+                    />
+                  ))
+            : null}
         </div>
       </div>
       <FilterSelect filter={filterOption} changeEvent={handleFilterChange} />
