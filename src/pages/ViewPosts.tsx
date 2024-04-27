@@ -58,12 +58,12 @@ const ViewPosts = () => {
   };
 
   return (
-    <div className="flex h-[92vh]">
+    <div className="flex h-screen">
       <div className="flex flex-col w-3/4 justify-start items-start bg-[#0b0d11]">
         <div className="items-start mt-10 ml-6">
           <SortSelect changeEvent={handleSortChange} />
         </div>
-        <div className="flex flex-col items-center text-start w-full h-full">
+        <div className="flex flex-col items-center text-start w-full overflow-y-auto">
           {posts && (filterOption === "forums" || filterOption === "")
             ? sortOption === "Newest"
               ? posts
