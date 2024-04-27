@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import ViewPosts from "./pages/ViewPosts";
 import CreatePost from "./pages/CreatePost";
+import PostPage from "./pages/PostPage";
 
 function App() {
   return (
@@ -11,9 +12,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/posts" element={<ViewPosts />} />
+        <Route path="/view" element={<ViewPosts />} />
         <Route path="/create" element={<CreatePost />} />
-        <Route path="/posts/:id" element={<h1>Post</h1>} />
+        <Route path="/view/:id" element={<PostPage />} />
       </Routes>
     </div>
   );

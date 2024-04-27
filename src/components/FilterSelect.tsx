@@ -17,8 +17,8 @@ const FilterSelect = ({ filter, changeEvent }: FilterSelectProps) => {
         <Link to="/create">Start New Forum</Link>
       </button>
       <div className="flex flex-col w-[95%] h-[80%] text-xl rounded-lg mr-8 p-4 font-open font-bold text-white text-start gap-2">
-        <section className="flex justify-between items-center mb-4 hover:-translate-y-1 hover:scale-[1.02] duration-200">
-          <div className="flex items-center gap-2">
+        <section className="flex justify-between items-center mb-4">
+          <div className="flex items-center gap-2 hover:bg-[#4c4c4c] hover:transition-all hover:rounded-lg hover:px-2">
             <VscCommentDiscussion />
             <button onClick={() => changeEvent("forums")}>All Forums</button>
           </div>
@@ -26,8 +26,8 @@ const FilterSelect = ({ filter, changeEvent }: FilterSelectProps) => {
             <IoIosCheckmark className="text-blue-400 scale-[2]" />
           )}
         </section>
-        <section className="flex justify-between items-center mb-4 hover:-translate-y-1 hover:scale-[1.02] duration-200">
-          <div className="flex items-center gap-2">
+        <section className="flex justify-between items-center mb-4">
+          <div className="flex items-center gap-2 hover:bg-[#4c4c4c] hover:transition-all hover:rounded-lg hover:px-2">
             <FiThumbsUp />
             <button onClick={() => changeEvent("upvoted")}>Upvoted</button>
           </div>
@@ -36,8 +36,8 @@ const FilterSelect = ({ filter, changeEvent }: FilterSelectProps) => {
           )}
         </section>
         <hr className="border-[#4b4b51] mb-4" />
-        <section className="flex justify-between items-center gap-2 mb-4 hover:-translate-y-1 hover:scale-[1.02] duration-200">
-          <div className="flex items-center gap-2 ">
+        <section className="flex justify-between items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 hover:bg-[#4c4c4c] hover:transition-all hover:rounded-lg hover:px-2">
             <FaJava className="text-orange-500" />
             <button onClick={() => changeEvent("java")}>Java</button>
           </div>
@@ -45,8 +45,8 @@ const FilterSelect = ({ filter, changeEvent }: FilterSelectProps) => {
             <IoIosCheckmark className="text-blue-400 scale-[2]" />
           )}
         </section>
-        <section className="flex justify-between items-center gap-2 mb-4 hover:-translate-y-1 hover:scale-[1.02] duration-200">
-          <div className="flex items-center gap-2">
+        <section className="flex justify-between items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 hover:bg-[#4c4c4c] hover:transition-all hover:rounded-lg hover:px-2">
             <FaPython className="text-blue-500" />
             <button onClick={() => changeEvent("python")}>Python</button>
           </div>
@@ -54,8 +54,8 @@ const FilterSelect = ({ filter, changeEvent }: FilterSelectProps) => {
             <IoIosCheckmark className="text-blue-400 scale-[2]" />
           )}
         </section>
-        <section className="flex justify-between items-center gap-2 mb-4 hover:-translate-y-1 hover:scale-[1.02] duration-200">
-          <div className="flex items-center gap-2">
+        <section className="flex justify-between items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 hover:bg-[#4c4c4c] hover:transition-all hover:rounded-lg hover:px-2">
             <IoLogoJavascript className="text-yellow-500" />
             <button onClick={() => changeEvent("javascript")}>
               JavaScript
@@ -65,8 +65,8 @@ const FilterSelect = ({ filter, changeEvent }: FilterSelectProps) => {
             <IoIosCheckmark className="text-blue-400 scale-[2]" />
           )}
         </section>
-        <section className="flex justify-between items-center gap-2 mb-4 hover:-translate-y-1 hover:scale-[1.02] duration-200">
-          <div className="flex items-center gap-2">
+        <section className="flex justify-between items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 hover:bg-[#4c4c4c] hover:transition-all hover:rounded-lg hover:px-2">
             <FaHtml5 className="text-orange-500" />
             <button onClick={() => changeEvent("html")}>HTML</button>
           </div>
@@ -74,8 +74,8 @@ const FilterSelect = ({ filter, changeEvent }: FilterSelectProps) => {
             <IoIosCheckmark className="text-blue-400 scale-[2]" />
           )}
         </section>
-        <section className="flex justify-between items-center gap-2 mb-4 hover:-translate-y-1 hover:scale-[1.02] duration-200">
-          <div className="flex items-center gap-2">
+        <section className="flex justify-between items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 hover:bg-[#4c4c4c] hover:transition-all hover:rounded-lg hover:px-2">
             <IoLogoCss3 className="text-blue-500" />
             <button onClick={() => changeEvent("css")}>CSS</button>
           </div>
@@ -83,8 +83,8 @@ const FilterSelect = ({ filter, changeEvent }: FilterSelectProps) => {
             <IoIosCheckmark className="text-blue-400 scale-[2]" />
           )}
         </section>
-        <section className="flex justify-between items-center gap-2 mb-4 hover:-translate-y-1 hover:scale-[1.02] duration-200">
-          <div className="flex items-center gap-2">
+        <section className="flex justify-between items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 hover:bg-[#4c4c4c] hover:transition-all hover:rounded-lg hover:px-2">
             <FaRust />
             <button onClick={() => changeEvent("rust")}>Rust</button>
           </div>
@@ -92,8 +92,8 @@ const FilterSelect = ({ filter, changeEvent }: FilterSelectProps) => {
             <IoIosCheckmark className="text-blue-400 scale-[2]" />
           )}
         </section>
-        <section className="flex justify-between items-center gap-2 mb-4 hover:-translate-y-1 hover:scale-[1.02] duration-200">
-          <div className="flex items-center gap-2">
+        <section className="flex justify-between items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 hover:bg-[#4c4c4c] hover:transition-all hover:rounded-lg hover:px-2">
             <FaPhp className="text-[#7377ae]" />
             <button onClick={() => changeEvent("php")}>PHP</button>
           </div>

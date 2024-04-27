@@ -34,7 +34,7 @@ const Navbar = () => {
           <IoHome />
         </Link>
         <Link
-          to="/posts"
+          to="/view"
           className="flex justify-center items-center gap-2 hover:text-blue-200 font-bold"
         >
           View
