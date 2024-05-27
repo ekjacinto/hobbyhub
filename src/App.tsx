@@ -6,10 +6,18 @@ import ViewPosts from "./pages/ViewPosts";
 import CreatePost from "./pages/CreatePost";
 import PostPage from "./pages/PostPage";
 import EditPost from "./pages/EditPost";
+import { Helmet } from "react-helmet";
 
 function App() {
   return (
     <div>
+      <Helmet>
+        <title>Code</title>
+        <meta
+          name="description"
+          content="A forum to share knowledge, skills, and questions"
+        />
+      </Helmet>
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
