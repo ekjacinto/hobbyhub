@@ -76,7 +76,7 @@ const PostPage = () => {
       day: "numeric",
       year: "numeric",
     });
-    return `${time}, ${date}`;
+    return `${time} • ${date}`;
   };
 
   const handleCommentChange = (comment: string) => {
