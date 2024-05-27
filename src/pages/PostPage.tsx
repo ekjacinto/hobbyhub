@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import { Link, useParams } from "react-router-dom";
 import { FaRegThumbsUp } from "react-icons/fa6";
+import DOMPurify from "dompurify";
 
 interface Post {
   id: number;
@@ -19,13 +20,7 @@ interface Post {
 const modules = {
   toolbar: [
     [{ header: [1, 2, false] }],
-    ["bold", "italic", "underline", "strike", "blockquote"],
-    [
-      { list: "ordered" },
-      { list: "bullet" },
-      { indent: "-1" },
-      { indent: "+1" },
-    ],
+    ["bold", "underline", "strike", "blockquote"],
     ["clean"],
   ],
 };
@@ -33,13 +28,10 @@ const modules = {
 const formats = [
   "header",
   "bold",
-  "italic",
   "underline",
   "strike",
   "blockquote",
-  "list",
   "bullet",
-  "indent",
   "clean",
 ];
 
@@ -78,9 +70,12 @@ const PostPage = () => {
     const time = dateTime.toLocaleTimeString([], {
       hour: "numeric",
       minute: "2-digit",
-      second: "2-digit",
     });
-    const date = dateTime.toLocaleDateString();
+    const date = dateTime.toLocaleDateString([], {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
     return `${time}, ${date}`;
   };
 
@@ -132,7 +127,9 @@ const PostPage = () => {
   return (
     <div className="flex h-full bg-[#0b0d11] justify-center items-center">
       <div className="relative flex flex-col w-full h-auto justify-start items-center text-gray-200 mb-8">
-        <div className="bg-[#0c0c0c] border-[1px] border-[#4b4b51] mt-8 px-4 pt-6 pb-6 max-w-[65rem] w-full h-auto rounded-lg shadow-sm shadow-[#cfcfcf]">
+        <div className="text-left mt-8 px-4 pt-6 pb-6 max-w-[65rem] w-full h-auto rounded-lg shadow-sm">
+          <h1 className="font-bold text-5xl mb-6">{post.title}</h1>
+          <p className="font-bold font-open text-lg mb-6">{post.description}</p>
           <div className="flex flex-row-reverse">
             {upvoted ? (
               <button className="absolute flex max-w-[4rem] w-full justify-end items-center gap-2 text-blue-500">
@@ -149,20 +146,23 @@ const PostPage = () => {
               </button>
             )}
           </div>
-          <h1 className="font-bold text-4xl mb-1">{post.title}</h1>
-          <p className="font-open text-sm mb-2">Posted @ {post.created_at}</p>
-          <p className="font-open text-sm mb-6">{post.description}</p>
+          <p className="font-open text-md mb-6">POSTED AT {`${post.created_at}`}</p>
           <hr className="border-gray-300 mb-6" />
           <div className="flex flex-col justify-center items-center w-full">
-            <p className="font-open font-bold text-lg mb-4">{post.content}</p>
             <img
               src={post.image}
               alt={post.title}
-              className="max-w-[40rem] w-full max-h-[30rem] h-full border-[1px] border-[#4b4b51] rounded-lg"
+              className="max-w-[40rem] w-full max-h-[30rem] h-full rounded-lg"
             />
+            <div
+              className="font-open text-lg mt-8 mb-2"
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
+            />
+          </div>
+          <hr className="border-gray-300 mt-2 mb-4" />
             <form
               onSubmit={handleCommentSubmit}
-              className="relative flex flex-col justify-evenly items-center w-full bg-[#020304] border-[1px] border-[#4b4b51] mt-4  rounded-lg"
+              className="relative flex flex-col justify-evenly items-center w-full mt-4"
             >
               {post.comments && post.comments.length > 0 ? (
                 <div className="flex flex-col justify-center items-center bg-[#020304] w-full h-full p-2 rounded-lg">
@@ -176,12 +176,12 @@ const PostPage = () => {
                   ))}
                 </div>
               ) : (
-                <p className="font-open font-bold text-lg mt-6">
+                <p className="font-open font-bold text-lg mt-6 mb-2">
                   No comments yet... be the first to comment below!
                 </p>
               )}
               <ReactQuill
-                className="bg-white rounded-sm shadow-sm shadow-white text-gray-800 w-full max-w-[85vh] h-[25vh] overflow-y-auto mt-2"
+                className="bg-white rounded-sm shadow-sm shadow-white text-gray-800 w-full max-w-[85vh] h-[25vh] overflow-y-auto my-2"
                 theme="snow"
                 value={comment}
                 onChange={handleCommentChange}
@@ -195,8 +195,8 @@ const PostPage = () => {
                 Comment
               </button>
             </form>
-          </div>
-          <div className="flex w-full h-[3rem] justify-center items-center mt-4 font-bold gap-4 ">
+          
+          <div className="flex w-full h-[3rem] justify-center items-center font-bold gap-4 ">
             <Link
               to={`/edit/${post.id}`}
               className="flex justify-center items-center w-[8rem] h-[2.5rem] rounded-sm hover:bg-green-600  bg-green-700 text-lg"

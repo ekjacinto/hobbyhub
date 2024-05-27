@@ -28,6 +28,7 @@ const LanguageSelect = ({ language, changeEvent }: LanguageSelectProps) => {
       </SelectTrigger>
       <SelectContent className="text-md text-white font-bold bg-[#0d0e11] border-none">
         <SelectGroup>
+          <SelectItem value="none">N/A</SelectItem>
           <SelectItem value="java">Java</SelectItem>
           <SelectItem value="python">Python</SelectItem>
           <SelectItem value="javascript">Javascript</SelectItem>

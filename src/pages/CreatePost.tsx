@@ -38,7 +38,6 @@ const CreatePost = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const sanitizedContent = content.replace(/<[^>]*>?/gm, "");
     const { data: postData, error: postError } = await supabase
       .from("posts")
       .insert([
@@ -46,7 +45,7 @@ const CreatePost = () => {
           title,
           description,
           image,
-          content: sanitizedContent,
+          content,
           language,
         },
       ]);
